@@ -40,9 +40,6 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ATLSimpleObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,9 +57,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ATLSimpleObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="main.rc">
@@ -75,9 +69,6 @@
     </None>
     <None Include="main.def">
       <Filter>源文件</Filter>
-    </None>
-    <None Include="ATLSimpleObject.rgs">
-      <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -24,16 +24,6 @@ interface IComponentRegistrar : IDispatch
 };
 
 [
-	object,
-	uuid(b2559765-18ef-474b-be7b-1c276b9058db),
-	dual,
-	nonextensible,
-	pointer_default(unique)
-]
-interface IATLSimpleObject : IDispatch
-{
-};
-[
 	uuid(f17db82d-29b8-4245-9ea9-6182eea7bd33),
 	version(1.0),
 	custom(a817e7a1-43fa-11d0-9e44-00aa00b6770a,"{7e9a7989-5402-4cff-a8b8-cf769972d901}")
@@ -48,13 +38,7 @@ library mainLib
 	{
 		[default] interface IComponentRegistrar;
 	};
-	[
-		uuid(45b85e54-4b46-4637-83c6-8b1b08701ae4)
-	]
-	coclass ATLSimpleObject
-	{
-		[default] interface IATLSimpleObject;
-	};
 };
 
+import "shobjidl.idl";
 import "shobjidl.idl";
