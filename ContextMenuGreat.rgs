@@ -1,0 +1,26 @@
+HKCR
+{
+	ContextMenuGreat.1.1 = s 'ContextMenuGreat class'
+	{
+		CLSID = s '{f769a6c4-e8c1-4343-8363-5a751b1f27d7}'
+	}
+	ContextMenuGreat.1 = s 'ContextMenuGreat class'
+	{		
+		CurVer = s 'ContextMenuGreat.1.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {f769a6c4-e8c1-4343-8363-5a751b1f27d7} = s 'ContextMenuGreat class'
+		{
+			ProgID = s 'ContextMenuGreat.1.1'
+			VersionIndependentProgID = s 'ContextMenuGreat.1'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{f17db82d-29b8-4245-9ea9-6182eea7bd33}'
+			Version = s '1.0'
+		}
+	}
+}

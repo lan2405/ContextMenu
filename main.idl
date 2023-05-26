@@ -24,6 +24,16 @@ interface IComponentRegistrar : IDispatch
 };
 
 [
+	object,
+	uuid(bb0d4f03-31d1-4b59-8296-7bac734f2d67),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IContextMenuGreat : IDispatch
+{
+};
+[
 	uuid(f17db82d-29b8-4245-9ea9-6182eea7bd33),
 	version(1.0),
 	custom(a817e7a1-43fa-11d0-9e44-00aa00b6770a,"{7e9a7989-5402-4cff-a8b8-cf769972d901}")
@@ -38,7 +48,15 @@ library mainLib
 	{
 		[default] interface IComponentRegistrar;
 	};
+	[
+		uuid(f769a6c4-e8c1-4343-8363-5a751b1f27d7)
+	]
+	coclass ContextMenuGreat
+	{
+		[default] interface IContextMenuGreat;
+	};
 };
 
+import "shobjidl.idl";
 import "shobjidl.idl";
 import "shobjidl.idl";
