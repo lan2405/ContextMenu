@@ -274,6 +274,7 @@
     <None Include="ContextMenuGreat.rgs" />
     <None Include="main.def" />
     <None Include="main.rgs" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="main.idl" />

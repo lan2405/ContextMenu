@@ -11,7 +11,7 @@
 #include "main_i.h"
 #include "dllmain.h"
 #include "compreg.h"
-
+#include"ContextMenuGreat.h"
 
 using namespace ATL;
 /*******************************************注册程序***********************************************************/

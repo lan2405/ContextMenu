@@ -2,10 +2,12 @@
 
 #pragma once
 #include "resource.h"       // 主符号
-
+#include <ShObjIdl_core.h>
 
 
 #include "main_i.h"
+#include <string>
+#include <vector>
 
 
 
@@ -21,18 +23,45 @@ using namespace ATL;
 class ATL_NO_VTABLE CContextMenuGreat :
 	public CComObjectRootEx<CComSingleThreadModel>,
 	public CComCoClass<CContextMenuGreat, &CLSID_ContextMenuGreat>,
-	public IDispatchImpl<IContextMenuGreat, &IID_IContextMenuGreat, &LIBID_mainLib, /*wMajor =*/ 1, /*wMinor =*/ 0>
+	public IDispatchImpl<IContextMenuGreat, &IID_IContextMenuGreat, &LIBID_mainLib, /*wMajor =*/ 1, /*wMinor =*/ 0>,
+	public IShellExtInit,
+	public IContextMenu
 {
+private:
+	enum MyCmd
+    {
+        CMD_ROOT,
+		CMD_SHOW_ONE,
+		CMD_SHOW_TWO,
+		CMD_SHOW_THR,
+		CMD_SHOW_FOUR,
+		CMD_SHOW_FIFT,
+        CMD_END
+    };
+    struct MenuInfo
+    {
+        std::string name;
+        // other infos
+    };
+    // datas
+    std::vector<std::wstring> m_filepaths;
 public:
 	CContextMenuGreat()
 	{
+		InternalAddRef();
+		
 	}
-
+	~CContextMenuGreat() {
+		InternalRelease();
+		InternalRelease();
+	}
 DECLARE_REGISTRY_RESOURCEID(108)
 
 
 BEGIN_COM_MAP(CContextMenuGreat)
 	COM_INTERFACE_ENTRY(IContextMenuGreat)
+	COM_INTERFACE_ENTRY(IContextMenu)
+	COM_INTERFACE_ENTRY(IShellExtInit)
 	COM_INTERFACE_ENTRY(IDispatch)
 END_COM_MAP()
 
@@ -47,12 +76,15 @@ END_COM_MAP()
 
 	void FinalRelease()
 	{
+		
 	}
 
 public:
-
-
-
+	HRESULT Initialize(PCIDLIST_ABSOLUTE pidlFolder, IDataObject* pdtobj, HKEY hkeyProgID);
+	HRESULT QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags);
+	HRESULT GetCommandString(UINT_PTR idCmd, UINT     uType, UINT* pReserved, CHAR* pszName, UINT     cchMax);
+	HRESULT InvokeCommand(CMINVOKECOMMANDINFO* pici);
+	
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(ContextMenuGreat), CContextMenuGreat)
